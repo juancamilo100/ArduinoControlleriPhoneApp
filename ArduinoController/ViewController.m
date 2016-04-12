@@ -32,8 +32,10 @@
 // method called whenever you have successfully connected to the BLE peripheral
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
+    NSLog(@"Connected");
     [peripheral setDelegate:self];
     [peripheral discoverServices:nil]; //ask the peripheral to discover the services associated with the peripheral device
+
     NSLog(@"Connected");
 }
 
@@ -44,6 +46,10 @@
     NSString * uuid = [[peripheral identifier] UUIDString];
     
     NSLog(@"UUID of discovered peripheral service is: %@", uuid);
+    NSLog(@"Name of discovered peripheral: %@", [peripheral name]);
+    [self.centralManager connectPeripheral:peripheral options:nil];
+    NSLog(@"Connecting...");
+    [self.centralManager stopScan];
     
     if ([uuid isEqualToString:@HM10_UUID]) {
         NSLog(@"Found peripheral: %@", localName);
@@ -63,6 +69,9 @@
     }
     else if ([central state] == CBCentralManagerStatePoweredOn) {
         NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
+        // Scan for devices
+        [_centralManager scanForPeripheralsWithServices:nil options:nil];
+        NSLog(@"Scanning started...");
     }
     else if ([central state] == CBCentralManagerStateUnauthorized) {
         NSLog(@"CoreBluetooth BLE state is unauthorized");
@@ -80,20 +89,28 @@
 // CBPeripheralDelegate - Invoked when you discover the peripheral's available services.
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
+    double numberOfServices = 0;
     for (CBService *service in peripheral.services) {
         NSLog(@"Discovered service: %@", service.UUID);
         [peripheral discoverCharacteristics:nil forService:service];
+        numberOfServices++;
     }
+    
+    NSLog(@"Number of services = %.1f", numberOfServices);
 }
 
 // Invoked when you discover the characteristics of a specified service.
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
-    for (CBCharacteristic * character in [service characteristics])
+    double numberOfCharacteristics = 0;
+    for (CBCharacteristic * characteristic in [service characteristics])
     {
         // Discover all descriptors for each characteristic.
-        [peripheral discoverDescriptorsForCharacteristic:character];
+        [peripheral discoverDescriptorsForCharacteristic:characteristic];
+        numberOfCharacteristics++;
     }
+    
+    NSLog(@"Number of characteristics = %.1f", numberOfCharacteristics);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
@@ -125,7 +142,7 @@
     NSLog(@"Received data = %@", str);
 }
 
-/***** SEND VALUE *******/
+/***** SEND DATA *******/
 - (void)sendValue:(NSString *) str
 {
     NSString *strData = [NSString stringWithFormat:@"%@:", str];

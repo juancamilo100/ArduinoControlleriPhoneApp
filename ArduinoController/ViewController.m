@@ -49,7 +49,6 @@
     [self.centralManager connectPeripheral:peripheral options:nil];
     NSLog(@"Connecting...");
     
-    
     if ([uuid isEqualToString:@HM10_UUID]) {
         NSLog(@"Found peripheral: %@", localName);
         [self.centralManager stopScan];
@@ -108,30 +107,9 @@
         // Discover all descriptors for each characteristic.
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
         [peripheral setNotifyValue:true forCharacteristic:characteristic];
-        numberOfCharacteristics++;
     }
     
     NSLog(@"Number of characteristics = %.1f", numberOfCharacteristics);
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-{
-    const char * bytes =[(NSData*)[[characteristic UUID] data] bytes];
-    if (bytes && strlen(bytes) == 2 && bytes[0] == (char)255 && bytes[1] == (char)225)
-    {
-        for (CBService * service in [self.selectedPeripheral services])
-        {
-            
-            for (CBCharacteristic * characteristic in [service characteristics])
-            {
-                // For every characteristic on every service, on the connected peripheral
-                // set the setNotifyValue to true.
-                NSLog(@"%c", bytes[1]);
-                
-                [peripheral setNotifyValue:true forCharacteristic:characteristic];
-            }
-        }
-    }
 }
 
 /***** RECEIVE DATA *******/
@@ -140,7 +118,8 @@
 {
     NSString * str = [[NSString alloc] initWithData:[characteristic value] encoding:NSUTF8StringEncoding];
     self.rxData = str;
-    NSLog(@"Received data = %@", str);
+    NSLog(@"Received data size = %ul", [str length]);
+    self.DataReceivedTextField.text = str;
 }
 
 /***** SEND DATA *******/
@@ -156,4 +135,9 @@
     }
 }
 
+- (IBAction)SendButton:(id)sender {
+    NSLog(@"%@", self.SendTextField.text);
+    [self sendValue:self.SendTextField.text];
+    self.SendTextField.text = @"";
+}
 @end

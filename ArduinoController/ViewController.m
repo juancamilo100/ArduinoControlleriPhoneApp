@@ -108,8 +108,6 @@
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
         [peripheral setNotifyValue:true forCharacteristic:characteristic];
     }
-    
-    NSLog(@"Number of characteristics = %.1f", numberOfCharacteristics);
 }
 
 /***** RECEIVE DATA *******/

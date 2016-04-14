@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-#define HM10_UUID "0000ffe0-0000-1000-8000-00805f9b34fb"
+#define HM10_UUID "219752D8-B3E3-92DD-BDCA-CE1815D5160D"
 
 @interface ViewController ()
 
@@ -32,7 +32,6 @@
 // method called whenever you have successfully connected to the BLE peripheral
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-    NSLog(@"Connected");
     [peripheral setDelegate:self];
     [peripheral discoverServices:nil]; //ask the peripheral to discover the services associated with the peripheral device
 
@@ -49,7 +48,7 @@
     NSLog(@"Name of discovered peripheral: %@", [peripheral name]);
     [self.centralManager connectPeripheral:peripheral options:nil];
     NSLog(@"Connecting...");
-    [self.centralManager stopScan];
+    
     
     if ([uuid isEqualToString:@HM10_UUID]) {
         NSLog(@"Found peripheral: %@", localName);
@@ -57,6 +56,7 @@
         self.HM10Peripheral = peripheral;
         peripheral.delegate = self;
         [self.centralManager connectPeripheral:peripheral options:nil];
+        [self.centralManager stopScan];
     }
 }
 
@@ -107,6 +107,7 @@
     {
         // Discover all descriptors for each characteristic.
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
+        [peripheral setNotifyValue:true forCharacteristic:characteristic];
         numberOfCharacteristics++;
     }
     
@@ -154,6 +155,5 @@
         }
     }
 }
-
 
 @end

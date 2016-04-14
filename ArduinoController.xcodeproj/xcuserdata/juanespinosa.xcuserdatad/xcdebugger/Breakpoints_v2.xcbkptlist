@@ -10,13 +10,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "482286952.762229"
+            timestampString = "482295323.327678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ArduinoController/ViewController.h"
+            timestampString = "482290791.112774"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "@interface ViewController"
+            landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController centralManager]"
+                  moduleName = "ArduinoController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juanespinosa/Google%20Drive/Educational/TreeHouse/Objective-C/Apps/ArduinoController/ArduinoController/ViewController.h"
+                  timestampString = "482290791.121285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController setCentralManager:]"
+                  moduleName = "ArduinoController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juanespinosa/Google%20Drive/Educational/TreeHouse/Objective-C/Apps/ArduinoController/ArduinoController/ViewController.h"
+                  timestampString = "482290791.121467"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

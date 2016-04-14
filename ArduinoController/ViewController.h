@@ -22,5 +22,9 @@
 @property (strong, nonatomic) CBCharacteristic *characteristics;
 @property (nonatomic, retain) NSString *rxData;
 
+@property (weak, nonatomic) IBOutlet UITextView *DataReceivedTextField;
+- (IBAction)SendButton:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITextField *SendTextField;
 @end
 

@@ -87,6 +87,11 @@
 {
     NSString * str = [[NSString alloc] initWithData:[characteristic value] encoding:NSUTF8StringEncoding];
     self.rxData = str;
+    
+    NSArray *parsingArray = [str componentsSeparatedByString: @":"];
+    
+    NSLog(@"Type: %@, Value1 = %@, Value2 = %@", [parsingArray objectAtIndex:0], [parsingArray objectAtIndex:1], [parsingArray objectAtIndex:2]);
+    
     NSLog(@"Received data size = %ul", [str length]);
     self.DataReceivedTextField.text = str;
 }

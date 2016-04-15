@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScanDevicesTableViewController.h"
 
 @import CoreBluetooth;
 @import QuartzCore;
 
-@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, DeviceSelectionDelegate>
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
 @property (nonatomic, strong) CBPeripheral     *HM10Peripheral;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *DataReceivedTextField;
 - (IBAction)SendButton:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *ScanForDevicesButton;
 @property (weak, nonatomic) IBOutlet UITextField *SendTextField;
 @end
 

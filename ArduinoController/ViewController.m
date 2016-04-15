@@ -127,7 +127,6 @@
     NSLog(@"A Device was selected");
 }
 
-
 #pragma mark Callbacks
 
 - (IBAction)SendButton:(id)sender {

@@ -18,7 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,9 +127,17 @@
     NSLog(@"A Device was selected");
 }
 
+
+#pragma mark Callbacks
+
 - (IBAction)SendButton:(id)sender {
     NSLog(@"%@", self.SendTextField.text);
     [self sendValue:self.SendTextField.text];
     self.SendTextField.text = @"";
+}
+
+-(void)dismissKeyboard {
+    [self.SendTextField resignFirstResponder];
+    [self.DataReceivedTextField resignFirstResponder];
 }
 @end

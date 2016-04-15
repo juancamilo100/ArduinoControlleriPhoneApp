@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-#define HM10_UUID "219752D8-B3E3-92DD-BDCA-CE1815D5160D"
+
 
 @interface ViewController ()
 
@@ -19,8 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//   self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-//    self.ScanForDevicesButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {

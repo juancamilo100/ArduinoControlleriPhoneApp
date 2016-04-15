@@ -8,11 +8,15 @@
 
 #import "ScanDevicesTableViewController.h"
 
+#define HM10_UUID "3193E4E3-4E8B-E6A7-364B-4BA348A1551D"
+
 @interface ScanDevicesTableViewController ()
 
 @end
 
 @implementation ScanDevicesTableViewController
+
+static NSArray *uuidAccepted = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,12 +24,12 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     self.tableView.tableHeaderView = headerView;
     
+    uuidAccepted = [NSArray arrayWithObjects:@HM10_UUID, nil];
+    
     self.numberOfPeripheralsFound = 0;
     self.discoveredPeripherals = [[NSMutableArray alloc] init];
     
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    
-//    NSLog(@"Appearded");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,12 +56,19 @@
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
     NSString *uuid = [[peripheral identifier] UUIDString];
+    NSString *peripheralName = [peripheral name];
+//    
+//    NSLog(@"uuid = %@", uuid);
+//    NSLog(@"Peripheral Name = %@", peripheralName);
+//    
+//    NSLog(@"uuid is in accepted devices: %@, ", [uuidAccepted containsObject: uuid] ? @"YES" : @"NO");
+//    NSLog(@"uuid is already in the array: %@, ", [self.discoveredPeripherals containsObject:uuid] ? @"YES" : @"NO");
     
-//    if (self.numberOfPeripheralsFound == 0) {
+    if (([uuidAccepted containsObject: uuid]) &&
+        (![self.discoveredPeripherals containsObject:uuid])) {
         [self.discoveredPeripherals addObject:peripheral];
-        self.numberOfPeripheralsFound++;
-//    }
-    
+    }
+
     [self.tableView reloadData];
 }
 
@@ -89,12 +100,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return self.numberOfPeripheralsFound;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    return [self.discoveredPeripherals count];
 }
 
 
@@ -103,7 +114,12 @@
     
     CBPeripheral *peripheral = self.discoveredPeripherals[indexPath.row];
     
-    cell.textLabel.text = [peripheral name];
+    if ([[peripheral name] isEqual: [NSNull null]]) {
+        cell.textLabel.text = [[peripheral identifier] UUIDString];
+    }
+    else{
+        cell.textLabel.text = [peripheral name];
+    }
     
     return cell;
 }
@@ -114,12 +130,15 @@
     CBPeripheral *peripheral = self.discoveredPeripherals[indexPath.row];
     
     [self.centralManager connectPeripheral:peripheral options:nil];
-//    [self.centralManager stopScan];
+
     NSLog(@"Name of peripheral selected: %@", [peripheral name]);
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    
+//Swipe down to dismiss the device scan modal view
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y <= -90) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end

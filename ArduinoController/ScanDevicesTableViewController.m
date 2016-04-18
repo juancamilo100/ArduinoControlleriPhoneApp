@@ -8,7 +8,7 @@
 
 #import "ScanDevicesTableViewController.h"
 
-#define HM10_UUID "3193E4E3-4E8B-E6A7-364B-4BA348A1551D"
+#define HM10_UUID "C1BB0955-4160-7B39-2694-D5277D2015CE"
 
 @interface ScanDevicesTableViewController ()
 

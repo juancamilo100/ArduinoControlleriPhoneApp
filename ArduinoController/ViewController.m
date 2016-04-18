@@ -126,7 +126,7 @@
 
 #pragma mark Callbacks
 
-- (IBAction)SendButton:(id)sender {
+-(IBAction)SendButton:(id)sender {
     NSLog(@"%@", self.SendTextField.text);
     [self sendValue:self.SendTextField.text];
     self.SendTextField.text = @"";

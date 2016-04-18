@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 
-
-
 @interface ViewController ()
 
 @end
@@ -89,13 +87,12 @@
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSString * str = [[NSString alloc] initWithData:[characteristic value] encoding:NSUTF8StringEncoding];
-    self.rxData = str;
     
-    NSArray *parsingArray = [str componentsSeparatedByString: @":"];
+    self.dataReceived = [[IncomingData alloc] initWithString:str];
     
-    NSLog(@"Type: %@, Value1 = %@, Value2 = %@", [parsingArray objectAtIndex:0], [parsingArray objectAtIndex:1], [parsingArray objectAtIndex:2]);
+    [self processData:[self.dataReceived getDataType]];
     
-    NSLog(@"Received data size = %ul", [str length]);
+    NSLog(@"Received data size = %d", (int)[str length]);
     self.DataReceivedTextField.text = str;
 }
 
@@ -139,4 +136,24 @@
     [self.SendTextField resignFirstResponder];
     [self.DataReceivedTextField resignFirstResponder];
 }
+
+-(void)processData:(NSUInteger)dataType {
+    switch (dataType) {
+        case Adc_DataType:
+            NSLog(@"Received ADC data");
+            break;
+            
+        case Pwm_DataType:
+            NSLog(@"Received PWM data");
+            break;
+            
+        case Gpio_DataType:
+            NSLog(@"Received GPIO data");
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end

@@ -8,9 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    Adc_DataType,
+    Pwm_DataType,
+    Gpio_DataType,
+    Max_DataType
+} DataType;
+
 @interface IncomingData : NSObject
 
+@property (nonatomic, strong) NSMutableArray *payload;
 @property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSArray *payload;
+
+- (instancetype)initWithString:(NSString *)data;
+- (NSUInteger)getDataType;
 
 @end

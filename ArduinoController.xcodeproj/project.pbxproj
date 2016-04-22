@@ -16,6 +16,8 @@
 		6E76585B1CB82D5600A3BBE9 /* ArduinoControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E76585A1CB82D5600A3BBE9 /* ArduinoControllerTests.m */; };
 		6E7658661CB82D5600A3BBE9 /* ArduinoControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658651CB82D5600A3BBE9 /* ArduinoControllerUITests.m */; };
 		6EB6E8F21CC193D000007098 /* IncomingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB6E8F11CC193D000007098 /* IncomingData.m */; };
+		6EE0A1131CCA80B3005A0832 /* PersonalityEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE0A1121CCA80B3005A0832 /* PersonalityEntity.m */; };
+		6EE0A1161CCA9891005A0832 /* PersonalityData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE0A1151CCA9891005A0832 /* PersonalityData.m */; };
 		6EF749781CC020E600802338 /* ScanDevicesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF749771CC020E600802338 /* ScanDevicesTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,10 @@
 		6E7658671CB82D5600A3BBE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EB6E8F01CC193D000007098 /* IncomingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingData.h; sourceTree = "<group>"; };
 		6EB6E8F11CC193D000007098 /* IncomingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingData.m; sourceTree = "<group>"; };
+		6EE0A1111CCA80B3005A0832 /* PersonalityEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalityEntity.h; sourceTree = "<group>"; };
+		6EE0A1121CCA80B3005A0832 /* PersonalityEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalityEntity.m; sourceTree = "<group>"; };
+		6EE0A1141CCA9891005A0832 /* PersonalityData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalityData.h; sourceTree = "<group>"; };
+		6EE0A1151CCA9891005A0832 /* PersonalityData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalityData.m; sourceTree = "<group>"; };
 		6EF749761CC020E600802338 /* ScanDevicesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanDevicesTableViewController.h; sourceTree = "<group>"; };
 		6EF749771CC020E600802338 /* ScanDevicesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanDevicesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +121,10 @@
 				6EF749771CC020E600802338 /* ScanDevicesTableViewController.m */,
 				6EB6E8F01CC193D000007098 /* IncomingData.h */,
 				6EB6E8F11CC193D000007098 /* IncomingData.m */,
+				6EE0A1141CCA9891005A0832 /* PersonalityData.h */,
+				6EE0A1151CCA9891005A0832 /* PersonalityData.m */,
+				6EE0A1111CCA80B3005A0832 /* PersonalityEntity.h */,
+				6EE0A1121CCA80B3005A0832 /* PersonalityEntity.m */,
 				6E7658491CB82D5500A3BBE9 /* Main.storyboard */,
 				6E76584C1CB82D5500A3BBE9 /* Assets.xcassets */,
 				6E76584E1CB82D5500A3BBE9 /* LaunchScreen.storyboard */,
@@ -284,10 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EB6E8F21CC193D000007098 /* IncomingData.m in Sources */,
+				6EE0A1161CCA9891005A0832 /* PersonalityData.m in Sources */,
 				6E7658481CB82D5500A3BBE9 /* ViewController.m in Sources */,
 				6E7658451CB82D5500A3BBE9 /* AppDelegate.m in Sources */,
 				6E7658421CB82D5500A3BBE9 /* main.m in Sources */,
 				6EF749781CC020E600802338 /* ScanDevicesTableViewController.m in Sources */,
+				6EE0A1131CCA80B3005A0832 /* PersonalityEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

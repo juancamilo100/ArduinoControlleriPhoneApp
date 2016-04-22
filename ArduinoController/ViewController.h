@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ScanDevicesTableViewController.h"
 #import "IncomingData.h"
+#import "PersonalityData.h"
 
 @import CoreBluetooth;
 @import QuartzCore;
@@ -22,12 +23,14 @@
 @property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
 @property (strong, nonatomic) CBPeripheral *selectedPeripheral;
 @property (strong, nonatomic) CBCharacteristic *characteristics;
+
 @property (strong, nonatomic) IncomingData *dataReceived;
+@property (strong, nonatomic) PersonalityData *personality;
 
 @property (weak, nonatomic) IBOutlet UITextView *DataReceivedTextField;
-- (IBAction)SendButton:(id)sender;
-
 @property (weak, nonatomic) IBOutlet UIButton *ScanForDevicesButton;
 @property (weak, nonatomic) IBOutlet UITextField *SendTextField;
+
+- (IBAction)SendButton:(id)sender;
 @end
 

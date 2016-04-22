@@ -20,6 +20,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    self.personality = [[PersonalityData alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +67,7 @@
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
         [peripheral setNotifyValue:true forCharacteristic:characteristic];
     }
-    NSLog(@"Reached characteristics");
+    [self sendValue:@"PERS"];
 }
 
 #pragma mark - Navigation
@@ -90,9 +91,13 @@
     
     self.dataReceived = [[IncomingData alloc] initWithString:str];
     
-    [self processData:[self.dataReceived getDataType]];
+    [self processData:self.dataReceived];
     
-    NSLog(@"Received data size = %d", (int)[str length]);
+//    NSLog(@"Received command = %@", self.dataReceived.command);
+//    NSLog(@"Received payload = %@", self.dataReceived.payload);
+    
+//    NSLog(@"Received data = %@", str);
+//    NSLog(@"Received data size = %d", (int)[str length]);
     self.DataReceivedTextField.text = str;
 }
 
@@ -137,8 +142,42 @@
     [self.DataReceivedTextField resignFirstResponder];
 }
 
--(void)processData:(NSUInteger)dataType {
-    switch (dataType) {
+-(void)processData:(IncomingData *)data {
+    switch ([data getCommand]) {
+            
+        case Personality_DataType:
+            
+            if ([[data getSubCommand] isEqualToString:@"IN"]) {
+                for (int i = 0; i < [[data getGpioInputPersonalityData].availablePinNumbers count]; i++) {
+                    NSNumber *availablePin = [[data getGpioInputPersonalityData].availablePinNumbers objectAtIndex:i];
+                    
+                    if (![self.personality.gpioInputPersonalityData.availablePinNumbers containsObject:availablePin]) {
+                        
+                        [self.personality.gpioInputPersonalityData.availablePinNumbers addObject:[[data getGpioOutputPersonalityData].availablePinNumbers objectAtIndex:i]];
+                    }
+                }
+                
+                NSLog(@"Number of GPIO available inputs: %@", self.personality.gpioInputPersonalityData.numberOfAvailablePins);
+                NSLog(@"GPIO available inputs: %@", self.personality.gpioInputPersonalityData.availablePinNumbers);
+            }
+            else if([[data getSubCommand] isEqualToString:@"OUT"])
+            {
+
+                for (int i = 0; i < [[data getGpioOutputPersonalityData].availablePinNumbers count]; i++) {
+                    NSNumber *availablePin = [[data getGpioOutputPersonalityData].availablePinNumbers objectAtIndex:i];
+                    BOOL pinIsOnTheList = [self.personality.gpioOutputPersonalityData.availablePinNumbers containsObject:availablePin];
+
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
+                        
+                        [self.personality.gpioOutputPersonalityData.availablePinNumbers addObject:availablePin];
+                    }
+                }
+                
+                NSLog(@"Number of GPIO available outputs: %@", self.personality.gpioOutputPersonalityData.numberOfAvailablePins);
+                NSLog(@"GPIO available outputs: %@", self.personality.gpioOutputPersonalityData.availablePinNumbers);
+            }
+            break;
+            
         case Adc_DataType:
             NSLog(@"Received ADC data");
             break;

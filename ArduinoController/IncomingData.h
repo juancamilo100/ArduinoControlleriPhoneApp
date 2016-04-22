@@ -7,20 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PersonalityEntity.h"
 
 typedef enum : NSUInteger {
     Adc_DataType,
     Pwm_DataType,
     Gpio_DataType,
+    Personality_DataType,
     Max_DataType
 } DataType;
 
 @interface IncomingData : NSObject
 
 @property (nonatomic, strong) NSMutableArray *payload;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *command;
+@property (nonatomic, strong) NSString *subCommand;
+@property (nonatomic, strong) PersonalityEntity *gpioInputPersonalityData;
+@property (nonatomic, strong) PersonalityEntity *gpioOutputPersonalityData;
+
 
 - (instancetype)initWithString:(NSString *)data;
-- (NSUInteger)getDataType;
+- (NSUInteger)getCommand;
+- (NSString *)getSubCommand;
+- (PersonalityEntity *) getGpioInputPersonalityData;
+- (PersonalityEntity *) getGpioOutputPersonalityData;
 
 @end

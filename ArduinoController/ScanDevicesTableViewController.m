@@ -8,7 +8,7 @@
 
 #import "ScanDevicesTableViewController.h"
 
-#define HM10_UUID "C1BB0955-4160-7B39-2694-D5277D2015CE"
+#define HM10_PERIPHERAL_NAME "HMSoft"
 
 @interface ScanDevicesTableViewController ()
 
@@ -16,7 +16,7 @@
 
 @implementation ScanDevicesTableViewController
 
-static NSArray *uuidAccepted = nil;
+static NSArray *acceptedDevices = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,7 +24,7 @@ static NSArray *uuidAccepted = nil;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     self.tableView.tableHeaderView = headerView;
     
-    uuidAccepted = [NSArray arrayWithObjects:@HM10_UUID, nil];
+    acceptedDevices = [NSArray arrayWithObjects:@HM10_PERIPHERAL_NAME, nil];
     
     self.numberOfPeripheralsFound = 0;
     self.discoveredPeripherals = [[NSMutableArray alloc] init];
@@ -57,15 +57,15 @@ static NSArray *uuidAccepted = nil;
 {
     NSString *uuid = [[peripheral identifier] UUIDString];
     NSString *peripheralName = [peripheral name];
-//    
-//    NSLog(@"uuid = %@", uuid);
-//    NSLog(@"Peripheral Name = %@", peripheralName);
-//    
-//    NSLog(@"uuid is in accepted devices: %@, ", [uuidAccepted containsObject: uuid] ? @"YES" : @"NO");
-//    NSLog(@"uuid is already in the array: %@, ", [self.discoveredPeripherals containsObject:uuid] ? @"YES" : @"NO");
     
-    if (([uuidAccepted containsObject: uuid]) &&
-        (![self.discoveredPeripherals containsObject:uuid])) {
+    NSLog(@"uuid = %@", uuid);
+    NSLog(@"Peripheral Name = %@", peripheralName);
+
+//    NSLog(@"uuid is in accepted devices: %@, ", [acceptedDevices containsObject: peripheralName] ? @"YES" : @"NO");
+//    NSLog(@"uuid is already in the array: %@, ", [self.discoveredPeripherals containsObject:peripheral] ? @"YES" : @"NO");
+    
+    if (([acceptedDevices containsObject: peripheralName]) &&
+        (![self.discoveredPeripherals containsObject:peripheral])) {
         [self.discoveredPeripherals addObject:peripheral];
     }
 

@@ -147,13 +147,16 @@
             
         case Personality_DataType:
             
-            if ([[data getSubCommand] isEqualToString:@"IN"]) {
+            if ([[data getSubCommand] isEqualToString:@"INP"]) {
+                self.personality.gpioInputPersonalityData.numberOfAvailablePins = [data getGpioInputPersonalityData].numberOfAvailablePins;
+                
                 for (int i = 0; i < [[data getGpioInputPersonalityData].availablePinNumbers count]; i++) {
                     NSNumber *availablePin = [[data getGpioInputPersonalityData].availablePinNumbers objectAtIndex:i];
+                    BOOL pinIsOnTheList = [self.personality.gpioInputPersonalityData.availablePinNumbers containsObject:availablePin];
                     
-                    if (![self.personality.gpioInputPersonalityData.availablePinNumbers containsObject:availablePin]) {
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
                         
-                        [self.personality.gpioInputPersonalityData.availablePinNumbers addObject:[[data getGpioOutputPersonalityData].availablePinNumbers objectAtIndex:i]];
+                        [self.personality.gpioInputPersonalityData.availablePinNumbers addObject:availablePin];
                     }
                 }
                 
@@ -163,6 +166,8 @@
             else if([[data getSubCommand] isEqualToString:@"OUT"])
             {
 
+                self.personality.gpioOutputPersonalityData.numberOfAvailablePins = [data getGpioOutputPersonalityData].numberOfAvailablePins;
+                
                 for (int i = 0; i < [[data getGpioOutputPersonalityData].availablePinNumbers count]; i++) {
                     NSNumber *availablePin = [[data getGpioOutputPersonalityData].availablePinNumbers objectAtIndex:i];
                     BOOL pinIsOnTheList = [self.personality.gpioOutputPersonalityData.availablePinNumbers containsObject:availablePin];

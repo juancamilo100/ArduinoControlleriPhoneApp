@@ -51,8 +51,20 @@
                                     <action selector="SendButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ld-fl-8mN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1h-go-B96">
+                                <rect key="frame" x="108" y="128" width="105" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.49572604727451219" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="GPIO">
+                                    <color key="titleColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="XO8-tK-NG4" kind="push" identifier="ShowGPIOControl" id="2wa-Da-v8W"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="2jS-0d-PHx"/>
                     <connections>
@@ -91,7 +103,36 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h5n-eq-tQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="261"/>
+            <point key="canvasLocation" x="1378" y="261"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="KNC-9S-rcT">
+            <objects>
+                <tableViewController id="XO8-tK-NG4" customClass="GPIOTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8KJ-Kz-odF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gpio" id="s6Y-Xd-Re4">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s6Y-Xd-Re4" id="yKr-hO-VfC">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XO8-tK-NG4" id="par-MZ-14d"/>
+                            <outlet property="delegate" destination="XO8-tK-NG4" id="Nsn-ea-7HY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ajh-cQ-ug8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XBX-mm-NSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014" y="621"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hfE-lO-3DK">

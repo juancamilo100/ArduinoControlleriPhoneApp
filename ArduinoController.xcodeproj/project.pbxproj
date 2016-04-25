@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E67CE571CCE6540000E3579 /* GPIOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE561CCE6540000E3579 /* GPIOTableViewController.m */; };
+		6E67CE5A1CCE97F2000E3579 /* GpioData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE591CCE97F2000E3579 /* GpioData.m */; };
 		6E7658421CB82D5500A3BBE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658411CB82D5500A3BBE9 /* main.m */; };
 		6E7658451CB82D5500A3BBE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658441CB82D5500A3BBE9 /* AppDelegate.m */; };
 		6E7658481CB82D5500A3BBE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658471CB82D5500A3BBE9 /* ViewController.m */; };
@@ -39,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E67CE551CCE6540000E3579 /* GPIOTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIOTableViewController.h; sourceTree = "<group>"; };
+		6E67CE561CCE6540000E3579 /* GPIOTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPIOTableViewController.m; sourceTree = "<group>"; };
+		6E67CE581CCE97F2000E3579 /* GpioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpioData.h; sourceTree = "<group>"; };
+		6E67CE591CCE97F2000E3579 /* GpioData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpioData.m; sourceTree = "<group>"; };
 		6E76583D1CB82D5500A3BBE9 /* ArduinoController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArduinoController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E7658411CB82D5500A3BBE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E7658431CB82D5500A3BBE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,10 +125,14 @@
 				6E7658471CB82D5500A3BBE9 /* ViewController.m */,
 				6EF749761CC020E600802338 /* ScanDevicesTableViewController.h */,
 				6EF749771CC020E600802338 /* ScanDevicesTableViewController.m */,
+				6E67CE551CCE6540000E3579 /* GPIOTableViewController.h */,
+				6E67CE561CCE6540000E3579 /* GPIOTableViewController.m */,
 				6EB6E8F01CC193D000007098 /* IncomingData.h */,
 				6EB6E8F11CC193D000007098 /* IncomingData.m */,
 				6EE0A1141CCA9891005A0832 /* PersonalityData.h */,
 				6EE0A1151CCA9891005A0832 /* PersonalityData.m */,
+				6E67CE581CCE97F2000E3579 /* GpioData.h */,
+				6E67CE591CCE97F2000E3579 /* GpioData.m */,
 				6EE0A1111CCA80B3005A0832 /* PersonalityEntity.h */,
 				6EE0A1121CCA80B3005A0832 /* PersonalityEntity.m */,
 				6E7658491CB82D5500A3BBE9 /* Main.storyboard */,
@@ -295,7 +305,9 @@
 			files = (
 				6EB6E8F21CC193D000007098 /* IncomingData.m in Sources */,
 				6EE0A1161CCA9891005A0832 /* PersonalityData.m in Sources */,
+				6E67CE571CCE6540000E3579 /* GPIOTableViewController.m in Sources */,
 				6E7658481CB82D5500A3BBE9 /* ViewController.m in Sources */,
+				6E67CE5A1CCE97F2000E3579 /* GpioData.m in Sources */,
 				6E7658451CB82D5500A3BBE9 /* AppDelegate.m in Sources */,
 				6E7658421CB82D5500A3BBE9 /* main.m in Sources */,
 				6EF749781CC020E600802338 /* ScanDevicesTableViewController.m in Sources */,

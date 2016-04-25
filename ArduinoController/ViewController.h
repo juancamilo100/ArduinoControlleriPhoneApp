@@ -10,6 +10,7 @@
 #import "ScanDevicesTableViewController.h"
 #import "IncomingData.h"
 #import "PersonalityData.h"
+#import "GpioData.h"
 
 @import CoreBluetooth;
 @import QuartzCore;
@@ -26,6 +27,7 @@
 
 @property (strong, nonatomic) IncomingData *dataReceived;
 @property (strong, nonatomic) PersonalityData *personality;
+@property (strong, nonatomic) GpioData *gpioData;
 
 @property (weak, nonatomic) IBOutlet UITextView *DataReceivedTextField;
 @property (weak, nonatomic) IBOutlet UIButton *ScanForDevicesButton;

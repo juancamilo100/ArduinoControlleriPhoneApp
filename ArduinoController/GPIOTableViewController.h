@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PersonalityData.h"
 #import "GpioData.h"
+#import "ViewController.h"
 
-@interface GPIOTableViewController : UITableViewController
+@interface GPIOTableViewController : UITableViewController<GpioUpdateProtocol>
 
 //@property (strong, nonatomic) PersonalityData *personality;
 @property (strong, nonatomic) NSArray *sectionTitles;

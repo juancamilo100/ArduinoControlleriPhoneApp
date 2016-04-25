@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.h"
-            timestampString = "483302689.542641"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "@interface ViewController"
-            landmarkType = "2">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "delegate"
+            landmarkType = "19">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -128,11 +128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483304844.550469"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "@implementation ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -208,11 +208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483304844.550469"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -224,11 +224,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483304844.550469"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -256,11 +256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483304844.550469"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -272,11 +272,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483304844.550469"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-processData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -288,11 +288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483306751.211172"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-processData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -304,11 +304,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483306751.211172"
+            timestampString = "483311351.175961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-processData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -320,11 +320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483306751.211172"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "-processData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -336,11 +336,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483304844.550469"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -368,11 +368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483304844.550469"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -416,11 +416,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/ViewController.m"
-            timestampString = "483306751.211172"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-processData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -448,12 +448,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/GPIOTableViewController.m"
-            timestampString = "483306706.314664"
+            timestampString = "483310144.751165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "-didReceiveMemoryWarning"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ArduinoController/GPIOTableViewController.m"
+            timestampString = "483311679.924127"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ArduinoController/GPIOTableViewController.m"
+            timestampString = "483311679.924127"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-updateDigitalInput:withValue:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

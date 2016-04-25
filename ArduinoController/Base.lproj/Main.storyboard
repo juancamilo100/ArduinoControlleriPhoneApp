@@ -136,6 +136,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="tintColor" red="0.88562761869999995" green="0.71209309119999997" blue="0.19148950880000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" keyboardKey="YES"/>

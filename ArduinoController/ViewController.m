@@ -86,10 +86,11 @@
     
     if ([segue.identifier isEqualToString:@"ShowGPIOControl"]) {
         
-        GPIOTableViewController *gpioTableViewController = (GPIOTableViewController *)segue.destinationViewController;
-        gpioTableViewController.gpioData = self.gpioData;
         
-//        gpioTableViewController.personality = self.personality;
+        GPIOTableViewController *gpioTableViewController = (GPIOTableViewController *)segue.destinationViewController;
+        
+        self.delegate = gpioTableViewController;
+        gpioTableViewController.gpioData = self.gpioData;
     }
 }
 
@@ -200,6 +201,11 @@
             
         case Gpio_DataType:
             NSLog(@"Received GPIO data");
+            
+            if ([[data getSubCommand] isEqualToString:@"INPUT"])
+            {
+                [self.delegate updateDigitalInput:data.payload[1] withValue:data.payload[2]];
+            }
             break;
             
         default:

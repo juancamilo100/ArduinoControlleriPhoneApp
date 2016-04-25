@@ -7,8 +7,6 @@
 //
 
 #import "GPIOTableViewController.h"
-#define OFF (false)
-#define ON (true)
 
 @interface GPIOTableViewController ()
 
@@ -61,49 +59,27 @@
     NSArray *keys = [gpioDictionary allKeys];
     
     NSString *gpioNumber = [NSString stringWithFormat:@"Pin %@",keys[indexPath.row]];
-    
-    NSLog(@"Pin Status: %@", [gpioDictionary objectForKey:keys[indexPath.row]]);
+
     cell.textLabel.text = gpioNumber;
-    cell.detailTextLabel.text = ([[gpioDictionary objectForKey:keys[indexPath.row]] integerValue]) ? @"HIGH" : @"LOW";
-    
+    if (indexPath.section == 0) {
+        cell.detailTextLabel.text = ([[gpioDictionary objectForKey:keys[indexPath.row]] integerValue]) ? @"RELEASED" : @"PRESSED";
+    }
+    else if (indexPath.section == 1)
+    {
+        cell.detailTextLabel.text = ([[gpioDictionary objectForKey:keys[indexPath.row]] integerValue]) ? @"HIGH" : @"LOW";
+    }
+
     
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        NSLog(@"Activated an output");
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
@@ -114,5 +90,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark Delegate Methods
+- (void) updateDigitalInput:(NSString *)inputNumber withValue:(NSNumber *)state {
+    NSLog(@"Pin number is: %@ and State is: %@", inputNumber, state);
+    [self.gpioData.inputs setObject:state forKey:inputNumber];
+    
+    [self.tableView reloadData];
+}
 
 @end

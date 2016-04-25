@@ -89,7 +89,7 @@
         GPIOTableViewController *gpioTableViewController = (GPIOTableViewController *)segue.destinationViewController;
         gpioTableViewController.gpioData = self.gpioData;
         
-        gpioTableViewController.personality = self.personality;
+//        gpioTableViewController.personality = self.personality;
     }
 }
 
@@ -158,8 +158,7 @@
         case Personality_DataType:
             
             if ([[data getSubCommand] isEqualToString:@"INP"]) {
-                self.personality.gpioInputPersonalityData.numberOfAvailablePins = [data getGpioInputPersonalityData].numberOfAvailablePins;
-                
+
                 for (int i = 0; i < [[data getGpioInputPersonalityData].availablePinNumbers count]; i++) {
                     
                     NSNumber *availablePin = [[data getGpioInputPersonalityData].availablePinNumbers objectAtIndex:i];
@@ -172,24 +171,10 @@
                     }
                 }
                 
-//                self.gpioData = [[GpioData alloc] init];
                 [self.gpioData initInputsWithData:self.personality.gpioInputPersonalityData.availablePinNumbers];
-                
-//                NSLog(@"The input data dictionary is %@", self.gpioData.inputs);
-//                
-//                [self.gpioData.inputs setObject:@1 forKey:@"12"];
-//                
-//                NSLog(@"The SIZE OF the input data dictionary is %d", [self.gpioData.inputs count]);
-//                
-//                NSLog(@"The status of pin 12 is: %@", [self.gpioData.inputs objectForKey:@"12"]);
-                
-//                NSLog(@"Number of GPIO available inputs: %@", self.personality.gpioInputPersonalityData.numberOfAvailablePins);
-//                NSLog(@"GPIO available inputs: %@", self.personality.gpioInputPersonalityData.availablePinNumbers);
             }
             else if([[data getSubCommand] isEqualToString:@"OUT"])
             {
-
-                self.personality.gpioOutputPersonalityData.numberOfAvailablePins = [data getGpioOutputPersonalityData].numberOfAvailablePins;
                 
                 for (int i = 0; i < [[data getGpioOutputPersonalityData].availablePinNumbers count]; i++) {
                     NSNumber *availablePin = [[data getGpioOutputPersonalityData].availablePinNumbers objectAtIndex:i];
@@ -202,19 +187,6 @@
                 }
                 
                 [self.gpioData initOutputsWithData:self.personality.gpioOutputPersonalityData.availablePinNumbers];
-                
-                NSLog(@"The output data dictionary is %@", self.gpioData.outputs);
-                
-                [self.gpioData.outputs setObject:@1 forKey:@"11"];
-                
-                NSLog(@"The output of the NEW data dictionary is %@", self.gpioData.outputs);
-                
-                NSLog(@"The SIZE OF the output data dictionary is %d", [self.gpioData.outputs count]);
-                
-                NSLog(@"The status of pin 11 is: %@", [self.gpioData.outputs objectForKey:@"11"]);
-                
-//                NSLog(@"Number of GPIO available outputs: %@", self.personality.gpioOutputPersonalityData.numberOfAvailablePins);
-//                NSLog(@"GPIO available outputs: %@", self.personality.gpioOutputPersonalityData.availablePinNumbers);
             }
             break;
             

@@ -23,7 +23,7 @@
     self.sectionTitles = @[@"Inputs", @"Outputs"];
     
     self.gpio = @{@"Inputs" : self.gpioData.inputs,
-                  @"Outputs" : self.self.gpioData.outputs
+                  @"Outputs" : self.gpioData.outputs
                   };
 }
 
@@ -62,7 +62,9 @@
     
     NSString *gpioNumber = [NSString stringWithFormat:@"Pin %@",keys[indexPath.row]];
     
+    NSLog(@"Pin Status: %@", [gpioDictionary objectForKey:keys[indexPath.row]]);
     cell.textLabel.text = gpioNumber;
+    cell.detailTextLabel.text = ([[gpioDictionary objectForKey:keys[indexPath.row]] integerValue]) ? @"HIGH" : @"LOW";
     
     
     return cell;

@@ -12,7 +12,7 @@
 
 @interface GPIOTableViewController : UITableViewController
 
-@property (strong, nonatomic) PersonalityData *personality;
+//@property (strong, nonatomic) PersonalityData *personality;
 @property (strong, nonatomic) NSArray *sectionTitles;
 @property (strong, nonatomic) NSDictionary *gpio;
 @property (strong, nonatomic) GpioData *gpioData;

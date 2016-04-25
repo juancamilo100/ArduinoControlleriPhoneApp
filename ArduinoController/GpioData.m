@@ -24,7 +24,7 @@
 
     for (int i = 0; i < [inputsData count]; i++)
     {
-        [self.inputs setObject:[NSNumber numberWithInt:0] forKey:inputsData[i]];
+        [self.inputs setObject:[NSNumber numberWithInt:1] forKey:inputsData[i]];
     }
 }
 

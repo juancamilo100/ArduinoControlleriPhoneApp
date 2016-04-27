@@ -95,7 +95,6 @@
 }
 
 /***** RECEIVE DATA *******/
-// Invoked when you retrieve a specified characteristic's value, or when the peripheral device notifies your app that the characteristic's value has changed.
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSString * str = [[NSString alloc] initWithData:[characteristic value] encoding:NSUTF8StringEncoding];
@@ -104,11 +103,8 @@
     
     [self processData:self.dataReceived];
     
-//    NSLog(@"Received command = %@", self.dataReceived.command);
-//    NSLog(@"Received payload = %@", self.dataReceived.payload);
-    
     NSLog(@"Received data = %@", str);
-//    NSLog(@"Received data size = %d", (int)[str length]);
+
     self.DataReceivedTextField.text = str;
 }
 
@@ -211,6 +207,17 @@
         default:
             break;
     }
+}
+
+#pragma mark Delegate Methods
+
+- (void) updateDigitalOutput:(NSInteger)outputNumber withValue:(NSInteger)state {
+    
+    
+    NSString *message = [NSString stringWithFormat:@"OUT:%ld:%ld", (long)outputNumber, (long)state];
+    NSLog(@"Sent the output value to Arduino: %@", message);
+    
+    [self sendValue:message];
 }
 
 @end

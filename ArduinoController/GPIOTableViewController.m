@@ -10,7 +10,6 @@
 
 @interface GPIOTableViewController ()
 
-
 @end
 
 @implementation GPIOTableViewController
@@ -23,11 +22,12 @@
     self.gpio = @{@"Inputs" : self.gpioData.inputs,
                   @"Outputs" : self.gpioData.outputs
                   };
+    self.delegate = [self.navigationController.viewControllers objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - Table view data source
@@ -76,8 +76,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.section == 1) {
         NSLog(@"Activated an output");
+        
+        NSString *sectionTitle = [self.sectionTitles objectAtIndex:indexPath.section];
+        NSMutableDictionary *gpioDictionary = [self.gpio objectForKey:sectionTitle];
+        
+        NSArray *keys = [gpioDictionary allKeys];
+        
+        NSInteger state = ![[gpioDictionary objectForKey:keys[indexPath.row]] integerValue];
+        
+        [gpioDictionary setObject:@(state) forKey:keys[indexPath.row]];
+
+        [self.delegate updateDigitalOutput:[keys[indexPath.row] integerValue] withValue:state];
+        
+        [self.tableView reloadData];
     }
 }
 

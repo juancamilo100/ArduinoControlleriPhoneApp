@@ -10,10 +10,11 @@
 #import "PersonalityData.h"
 #import "GpioData.h"
 #import "ViewController.h"
+#import "Protocols.h"
 
-@interface GPIOTableViewController : UITableViewController<GpioUpdateProtocol>
+@interface GPIOTableViewController : UITableViewController<GpioInputUpdateProtocol>
 
-//@property (strong, nonatomic) PersonalityData *personality;
+@property (nonatomic, weak) id <GpioOutputUpdateProtocol> delegate;
 @property (strong, nonatomic) NSArray *sectionTitles;
 @property (strong, nonatomic) NSDictionary *gpio;
 @property (strong, nonatomic) GpioData *gpioData;

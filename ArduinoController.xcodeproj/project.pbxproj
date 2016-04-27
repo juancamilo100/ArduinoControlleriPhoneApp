@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6E67CE571CCE6540000E3579 /* GPIOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE561CCE6540000E3579 /* GPIOTableViewController.m */; };
 		6E67CE5A1CCE97F2000E3579 /* GpioData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE591CCE97F2000E3579 /* GpioData.m */; };
+		6E67CE5D1CD0FA09000E3579 /* Protocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE5C1CD0FA09000E3579 /* Protocols.m */; };
 		6E7658421CB82D5500A3BBE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658411CB82D5500A3BBE9 /* main.m */; };
 		6E7658451CB82D5500A3BBE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658441CB82D5500A3BBE9 /* AppDelegate.m */; };
 		6E7658481CB82D5500A3BBE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658471CB82D5500A3BBE9 /* ViewController.m */; };
@@ -45,6 +46,8 @@
 		6E67CE561CCE6540000E3579 /* GPIOTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPIOTableViewController.m; sourceTree = "<group>"; };
 		6E67CE581CCE97F2000E3579 /* GpioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpioData.h; sourceTree = "<group>"; };
 		6E67CE591CCE97F2000E3579 /* GpioData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpioData.m; sourceTree = "<group>"; };
+		6E67CE5B1CD0FA09000E3579 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
+		6E67CE5C1CD0FA09000E3579 /* Protocols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Protocols.m; sourceTree = "<group>"; };
 		6E76583D1CB82D5500A3BBE9 /* ArduinoController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArduinoController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E7658411CB82D5500A3BBE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E7658431CB82D5500A3BBE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				6E67CE591CCE97F2000E3579 /* GpioData.m */,
 				6EE0A1111CCA80B3005A0832 /* PersonalityEntity.h */,
 				6EE0A1121CCA80B3005A0832 /* PersonalityEntity.m */,
+				6E67CE5B1CD0FA09000E3579 /* Protocols.h */,
+				6E67CE5C1CD0FA09000E3579 /* Protocols.m */,
 				6E7658491CB82D5500A3BBE9 /* Main.storyboard */,
 				6E76584C1CB82D5500A3BBE9 /* Assets.xcassets */,
 				6E76584E1CB82D5500A3BBE9 /* LaunchScreen.storyboard */,
@@ -308,6 +313,7 @@
 				6E67CE571CCE6540000E3579 /* GPIOTableViewController.m in Sources */,
 				6E7658481CB82D5500A3BBE9 /* ViewController.m in Sources */,
 				6E67CE5A1CCE97F2000E3579 /* GpioData.m in Sources */,
+				6E67CE5D1CD0FA09000E3579 /* Protocols.m in Sources */,
 				6E7658451CB82D5500A3BBE9 /* AppDelegate.m in Sources */,
 				6E7658421CB82D5500A3BBE9 /* main.m in Sources */,
 				6EF749781CC020E600802338 /* ScanDevicesTableViewController.m in Sources */,

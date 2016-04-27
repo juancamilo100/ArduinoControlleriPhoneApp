@@ -11,19 +11,14 @@
 #import "IncomingData.h"
 #import "PersonalityData.h"
 #import "GpioData.h"
+#import "Protocols.h"
 
 @import CoreBluetooth;
 @import QuartzCore;
 
-@protocol GpioUpdateProtocol
+@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, DeviceSelectionDelegate, GpioInputUpdateProtocol>
 
-- (void) updateDigitalInput:(NSNumber *)inputNumber withValue:(NSNumber *)state;
-
-@end
-
-@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, DeviceSelectionDelegate>
-
-@property (nonatomic, weak) id <GpioUpdateProtocol> delegate;
+@property (nonatomic, weak) id <GpioInputUpdateProtocol> delegate;
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
 @property (nonatomic, strong) CBPeripheral     *HM10Peripheral;

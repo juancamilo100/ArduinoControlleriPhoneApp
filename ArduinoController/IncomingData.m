@@ -28,18 +28,19 @@
 {
     self = [super init];
     if (self) {
-        NSArray *parsingArray = [data componentsSeparatedByString: @":"];
+        
+        self.parsingArray = [[NSArray alloc] initWithArray:[data componentsSeparatedByString: @":"]];
         
         _payload = [[NSMutableArray alloc] init];
         _gpioInputPersonalityData = [[PersonalityEntity alloc] init];
         _gpioOutputPersonalityData = [[PersonalityEntity alloc] init];
         _adcPersonalityData = [[PersonalityEntity alloc] init];
     
-        _command = [parsingArray objectAtIndex:0];
-        _subCommand = [parsingArray objectAtIndex:1];
+        _command = [self.parsingArray objectAtIndex:0];
         
-        for (int i = 1; i < [parsingArray count]; i++) {
-           _payload[i - 1] = [parsingArray objectAtIndex:i];
+        
+        for (int i = 1; i < [self.parsingArray count]; i++) {
+           _payload[i - 1] = [self.parsingArray objectAtIndex:i];
         }
     }
     
@@ -75,6 +76,7 @@
 }
 
 - (NSString *)getSubCommand {
+    self.subCommand = [self.parsingArray objectAtIndex:1];
     return self.subCommand;
 }
 
@@ -96,8 +98,6 @@
 }
 
 - (PersonalityEntity *) getAdcPersonalityData {
-    
-    
     
     self.adcPersonalityData.numberOfAvailablePins = [self.payload objectAtIndex:ADC_NUMBER_OF_AVAILABLE_PINS_INDEX];
     

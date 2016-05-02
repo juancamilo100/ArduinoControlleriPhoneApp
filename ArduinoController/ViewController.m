@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "GPIOTableViewController.h"
+#import "AdcTableViewController.h"
 
 @interface ViewController ()
 
@@ -87,11 +88,18 @@
     
     if ([segue.identifier isEqualToString:@"ShowGPIOControl"]) {
         
-        
         GPIOTableViewController *gpioTableViewController = (GPIOTableViewController *)segue.destinationViewController;
         
-        self.delegate = gpioTableViewController;
+        self.gpioInputUpdatedelegate = gpioTableViewController;
         gpioTableViewController.gpioData = self.gpioData;
+    }
+    
+    if ([segue.identifier isEqualToString:@"ShowAdcControl"]) {
+        
+        AdcTableViewController *adcTableViewController = (AdcTableViewController *)segue.destinationViewController;
+        
+        self.adcInputUpdatedelegate = adcTableViewController;
+        adcTableViewController.adcData = self.adcData;
     }
 }
 
@@ -210,6 +218,8 @@
             
         case Adc_DataType:
             NSLog(@"Received ADC data");
+            [self.adcInputUpdatedelegate updateAdcInput:data.payload[0] withValue:data.payload[1]];
+            
             break;
             
         case Pwm_DataType:
@@ -221,7 +231,7 @@
             
             if ([[data getSubCommand] isEqualToString:@"INPUT"])
             {
-                [self.delegate updateDigitalInput:data.payload[1] withValue:data.payload[2]];
+                [self.gpioInputUpdatedelegate updateDigitalInput:data.payload[1] withValue:data.payload[2]];
             }
             break;
             

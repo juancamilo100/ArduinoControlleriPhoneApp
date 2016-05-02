@@ -19,6 +19,7 @@ typedef enum : NSUInteger {
 
 @interface IncomingData : NSObject
 
+@property (nonatomic, strong) NSArray *parsingArray;
 @property (nonatomic, strong) NSMutableArray *payload;
 @property (nonatomic, strong) NSString *command;
 @property (nonatomic, strong) NSString *subCommand;

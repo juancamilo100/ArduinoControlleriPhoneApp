@@ -20,6 +20,12 @@
 
 @end
 
+@protocol AdcInputUpdateProtocol
+
+- (void) updateAdcInput:(NSNumber *)inputNumber withValue:(NSNumber *)value;
+
+@end
+
 @interface Protocols : NSObject
 
 @end

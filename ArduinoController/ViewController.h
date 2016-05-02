@@ -17,9 +17,10 @@
 @import CoreBluetooth;
 @import QuartzCore;
 
-@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, DeviceSelectionDelegate, GpioInputUpdateProtocol>
+@interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, DeviceSelectionDelegate, GpioInputUpdateProtocol, AdcInputUpdateProtocol>
 
-@property (nonatomic, weak) id <GpioInputUpdateProtocol> delegate;
+@property (nonatomic, weak) id <GpioInputUpdateProtocol> gpioInputUpdatedelegate;
+@property (nonatomic, weak) id <AdcInputUpdateProtocol> adcInputUpdatedelegate;
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
 @property (nonatomic, strong) CBPeripheral     *HM10Peripheral;

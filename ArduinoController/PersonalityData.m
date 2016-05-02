@@ -16,6 +16,7 @@
     if (self) {
         _gpioInputPersonalityData = [[PersonalityEntity alloc] init];
         _gpioOutputPersonalityData = [[PersonalityEntity alloc] init];
+        
     }
     return self;
 }

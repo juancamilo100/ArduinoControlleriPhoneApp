@@ -23,6 +23,7 @@
     [self.view addGestureRecognizer:tap];
     self.personality = [[PersonalityData alloc] init];
     self.gpioData = [[GpioData alloc] init];
+    self.adcData = [[AdcData alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,11 +37,11 @@
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     if ([central state] == CBCentralManagerStatePoweredOff) {
-        NSLog(@"CoreBluetooth BLE hardware is powered off");
+//        NSLog(@"CoreBluetooth BLE hardware is powered off");
         
     }
     else if ([central state] == CBCentralManagerStatePoweredOn) {
-        NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
+//        NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
 
     }
 }
@@ -52,12 +53,12 @@
 {
     double numberOfServices = 0;
     for (CBService *service in peripheral.services) {
-        NSLog(@"Discovered service: %@", service.UUID);
+//        NSLog(@"Discovered service: %@", service.UUID);
         [peripheral discoverCharacteristics:nil forService:service];
         numberOfServices++;
     }
     
-    NSLog(@"Number of services = %.1f", numberOfServices);
+//    NSLog(@"Number of services = %.1f", numberOfServices);
 }
 
 // Invoked when you discover the characteristics of a specified service.
@@ -133,7 +134,7 @@
     [self.selectedPeripheral setDelegate:self];
     [self.selectedPeripheral discoverServices:nil];
     
-    NSLog(@"A Device was selected");
+//    NSLog(@"A Device was selected");
 }
 
 #pragma mark Callbacks
@@ -150,8 +151,9 @@
 }
 
 -(void)processData:(IncomingData *)data {
+    
     switch ([data getCommand]) {
-            
+
         case Personality_DataType:
             
             if ([[data getSubCommand] isEqualToString:@"INP"]) {
@@ -170,6 +172,7 @@
                 
                 [self.gpioData initInputsWithData:self.personality.gpioInputPersonalityData.availablePinNumbers];
             }
+            
             else if([[data getSubCommand] isEqualToString:@"OUT"])
             {
                 
@@ -184,6 +187,24 @@
                 }
                 
                 [self.gpioData initOutputsWithData:self.personality.gpioOutputPersonalityData.availablePinNumbers];
+            }
+            
+            else if ([[data getSubCommand] isEqualToString:@"ADC"]) {
+                
+                for (int i = 0; i < [[data getAdcPersonalityData].availablePinNumbers count]; i++) {
+                    
+                    NSNumber *availablePin = [[data getAdcPersonalityData].availablePinNumbers objectAtIndex:i];
+                    
+                    BOOL pinIsOnTheList = [self.personality.adcPersonalityData.availablePinNumbers containsObject:availablePin];
+                    
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
+                        
+                        [self.personality.adcPersonalityData.availablePinNumbers addObject:availablePin];
+                    }
+                }
+
+                [self.adcData initAdcInputsWithData:self.personality.adcPersonalityData.availablePinNumbers];
+                NSLog(@"This is the adc array: %@", self.adcData.adcInputs);
             }
             break;
             
@@ -215,7 +236,7 @@
     
     
     NSString *message = [NSString stringWithFormat:@"OUT:%ld:%ld", (long)outputNumber, (long)state];
-    NSLog(@"Sent the output value to Arduino: %@", message);
+//    NSLog(@"Sent the output value to Arduino: %@", message);
     
     [self sendValue:message];
 }

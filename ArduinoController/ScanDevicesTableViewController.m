@@ -47,7 +47,7 @@ static NSArray *acceptedDevices = nil;
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     [self.deviceSelectionDelegate bluetoothDeviceSelected:peripheral withCentralManager:self.centralManager];
-    NSLog(@"Connected");
+//    NSLog(@"Connected");
     [self.centralManager stopScan];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -58,8 +58,8 @@ static NSArray *acceptedDevices = nil;
     NSString *uuid = [[peripheral identifier] UUIDString];
     NSString *peripheralName = [peripheral name];
     
-    NSLog(@"uuid = %@", uuid);
-    NSLog(@"Peripheral Name = %@", peripheralName);
+//    NSLog(@"uuid = %@", uuid);
+//    NSLog(@"Peripheral Name = %@", peripheralName);
 
 //    NSLog(@"uuid is in accepted devices: %@, ", [acceptedDevices containsObject: peripheralName] ? @"YES" : @"NO");
 //    NSLog(@"uuid is already in the array: %@, ", [self.discoveredPeripherals containsObject:peripheral] ? @"YES" : @"NO");
@@ -131,7 +131,7 @@ static NSArray *acceptedDevices = nil;
     
     [self.centralManager connectPeripheral:peripheral options:nil];
 
-    NSLog(@"Name of peripheral selected: %@", [peripheral name]);
+//    NSLog(@"Name of peripheral selected: %@", [peripheral name]);
 }
 
 //Swipe down to dismiss the device scan modal view

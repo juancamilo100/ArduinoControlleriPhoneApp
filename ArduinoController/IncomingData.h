@@ -24,6 +24,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *subCommand;
 @property (nonatomic, strong) PersonalityEntity *gpioInputPersonalityData;
 @property (nonatomic, strong) PersonalityEntity *gpioOutputPersonalityData;
+@property (nonatomic, strong) PersonalityEntity *adcPersonalityData;
 
 
 - (instancetype)initWithString:(NSString *)data;
@@ -31,5 +32,6 @@ typedef enum : NSUInteger {
 - (NSString *)getSubCommand;
 - (PersonalityEntity *) getGpioInputPersonalityData;
 - (PersonalityEntity *) getGpioOutputPersonalityData;
+- (PersonalityEntity *) getAdcPersonalityData;
 
 @end

@@ -11,6 +11,7 @@
 #import "IncomingData.h"
 #import "PersonalityData.h"
 #import "GpioData.h"
+#import "AdcData.h"
 #import "Protocols.h"
 
 @import CoreBluetooth;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) IncomingData *dataReceived;
 @property (strong, nonatomic) PersonalityData *personality;
 @property (strong, nonatomic) GpioData *gpioData;
+@property (strong, nonatomic) AdcData *adcData;
 
 @property (weak, nonatomic) IBOutlet UITextView *DataReceivedTextField;
 @property (weak, nonatomic) IBOutlet UIButton *ScanForDevicesButton;

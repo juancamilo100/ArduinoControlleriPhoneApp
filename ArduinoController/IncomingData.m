@@ -11,8 +11,11 @@
 #define CASE(str)   if ([__s__ isEqualToString:(str)])
 #define SWITCH(s)   for (NSString *__s__ = (s); ; )
 #define DEFAULT
+
 #define GPIO_NUMBER_OF_AVAILABLE_PINS_INDEX (1)
 #define GPIO_AVAILABLE_PINS_INDEX (2)
+#define ADC_NUMBER_OF_AVAILABLE_PINS_INDEX (1)
+#define ADC_AVAILABLE_PINS_INDEX (2)
 
 #define ADC_DATA (@"ADC")
 #define PWM_DATA (@"PWM")
@@ -30,6 +33,7 @@
         _payload = [[NSMutableArray alloc] init];
         _gpioInputPersonalityData = [[PersonalityEntity alloc] init];
         _gpioOutputPersonalityData = [[PersonalityEntity alloc] init];
+        _adcPersonalityData = [[PersonalityEntity alloc] init];
     
         _command = [parsingArray objectAtIndex:0];
         _subCommand = [parsingArray objectAtIndex:1];
@@ -89,6 +93,17 @@
     self.gpioOutputPersonalityData.availablePinNumbers = (NSMutableArray *)[[self.payload objectAtIndex:GPIO_AVAILABLE_PINS_INDEX] componentsSeparatedByString: @","];
     
     return self.gpioOutputPersonalityData;
+}
+
+- (PersonalityEntity *) getAdcPersonalityData {
+    
+    
+    
+    self.adcPersonalityData.numberOfAvailablePins = [self.payload objectAtIndex:ADC_NUMBER_OF_AVAILABLE_PINS_INDEX];
+    
+    self.adcPersonalityData.availablePinNumbers = (NSMutableArray *)[[self.payload objectAtIndex:ADC_AVAILABLE_PINS_INDEX] componentsSeparatedByString: @","];
+    
+    return self.adcPersonalityData;
 }
 
 @end

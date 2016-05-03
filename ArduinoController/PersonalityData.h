@@ -14,6 +14,7 @@
 @property (nonatomic, strong) PersonalityEntity *gpioInputPersonalityData;
 @property (nonatomic, strong) PersonalityEntity *gpioOutputPersonalityData;
 @property (nonatomic, strong) PersonalityEntity *adcPersonalityData;
+@property (nonatomic, strong) PersonalityEntity *pwmPersonalityData;
 
 
 @end

@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AdcData : NSObject
+@interface AnalogData : NSObject
 
 @property (strong, nonatomic) NSMutableDictionary *adcInputs;
+@property (strong, nonatomic) NSMutableDictionary *pwmOutputs;
 
-- (void) initAdcInputsWithData:(NSMutableArray *)inputsData;
+- (void) initAdcInputsWithData:(NSMutableArray *)adcInputsData;
+- (void) initPwmOutputsWithData:(NSMutableArray *)pwmOutputsData;
 
 @end

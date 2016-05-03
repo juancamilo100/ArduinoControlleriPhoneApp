@@ -24,7 +24,7 @@
     [self.view addGestureRecognizer:tap];
     self.personality = [[PersonalityData alloc] init];
     self.gpioData = [[GpioData alloc] init];
-    self.adcData = [[AdcData alloc] init];
+    self.analogData = [[AnalogData alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,7 +99,7 @@
         AdcTableViewController *adcTableViewController = (AdcTableViewController *)segue.destinationViewController;
         
         self.adcInputUpdatedelegate = adcTableViewController;
-        adcTableViewController.adcData = self.adcData;
+        adcTableViewController.analogData = self.analogData;
     }
 }
 
@@ -208,7 +208,24 @@
                     }
                 }
 
-                [self.adcData initAdcInputsWithData:self.personality.adcPersonalityData.availablePinNumbers];
+                [self.analogData initAdcInputsWithData:self.personality.adcPersonalityData.availablePinNumbers];
+            }
+            
+            else if ([[data getSubCommand] isEqualToString:@"PWM"]) {
+                
+                for (int i = 0; i < [[data getPwmPersonalityData].availablePinNumbers count]; i++) {
+                    
+                    NSNumber *availablePin = [[data getPwmPersonalityData].availablePinNumbers objectAtIndex:i];
+                    
+                    BOOL pinIsOnTheList = [self.personality.pwmPersonalityData.availablePinNumbers containsObject:availablePin];
+                    
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
+                        
+                        [self.personality.pwmPersonalityData.availablePinNumbers addObject:availablePin];
+                    }
+                }
+                
+                [self.analogData initPwmOutputsWithData:self.personality.pwmPersonalityData.availablePinNumbers];
             }
             break;
             

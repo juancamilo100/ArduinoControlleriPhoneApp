@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AdcData.h"
+#import "AnalogData.h"
 #import "Protocols.h"
 
 @interface AdcTableViewController : UITableViewController<AdcInputUpdateProtocol>
 
-@property (strong, nonatomic) AdcData *adcData;
+@property (strong, nonatomic) NSDictionary *analog;
+@property (strong, nonatomic) AnalogData *analogData;
+@property (strong, nonatomic) NSArray *sectionTitles;
 
 @end

@@ -16,6 +16,8 @@
 #define GPIO_AVAILABLE_PINS_INDEX (2)
 #define ADC_NUMBER_OF_AVAILABLE_PINS_INDEX (1)
 #define ADC_AVAILABLE_PINS_INDEX (2)
+#define PWM_NUMBER_OF_AVAILABLE_PINS_INDEX (1)
+#define PWM_AVAILABLE_PINS_INDEX (2)
 
 #define ADC_DATA (@"ADC")
 #define PWM_DATA (@"PWM")
@@ -35,6 +37,7 @@
         _gpioInputPersonalityData = [[PersonalityEntity alloc] init];
         _gpioOutputPersonalityData = [[PersonalityEntity alloc] init];
         _adcPersonalityData = [[PersonalityEntity alloc] init];
+        _pwmPersonalityData = [[PersonalityEntity alloc] init];
     
         _command = [self.parsingArray objectAtIndex:0];
         
@@ -104,6 +107,15 @@
     self.adcPersonalityData.availablePinNumbers = (NSMutableArray *)[[self.payload objectAtIndex:ADC_AVAILABLE_PINS_INDEX] componentsSeparatedByString: @","];
     
     return self.adcPersonalityData;
+}
+
+- (PersonalityEntity *) getPwmPersonalityData {
+    
+    self.pwmPersonalityData.numberOfAvailablePins = [self.payload objectAtIndex:PWM_NUMBER_OF_AVAILABLE_PINS_INDEX];
+    
+    self.pwmPersonalityData.availablePinNumbers = (NSMutableArray *)[[self.payload objectAtIndex:PWM_AVAILABLE_PINS_INDEX] componentsSeparatedByString: @","];
+    
+    return self.pwmPersonalityData;
 }
 
 @end

@@ -10,7 +10,7 @@
 		6E67CE571CCE6540000E3579 /* GPIOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE561CCE6540000E3579 /* GPIOTableViewController.m */; };
 		6E67CE5A1CCE97F2000E3579 /* GpioData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE591CCE97F2000E3579 /* GpioData.m */; };
 		6E67CE5D1CD0FA09000E3579 /* Protocols.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67CE5C1CD0FA09000E3579 /* Protocols.m */; };
-		6E74AFB71CD7B10000F3D2F4 /* AdcData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E74AFB61CD7B10000F3D2F4 /* AdcData.m */; };
+		6E74AFB71CD7B10000F3D2F4 /* AnalogData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E74AFB61CD7B10000F3D2F4 /* AnalogData.m */; };
 		6E74AFBA1CD7D26F00F3D2F4 /* AdcTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E74AFB91CD7D26F00F3D2F4 /* AdcTableViewController.m */; };
 		6E7658421CB82D5500A3BBE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658411CB82D5500A3BBE9 /* main.m */; };
 		6E7658451CB82D5500A3BBE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7658441CB82D5500A3BBE9 /* AppDelegate.m */; };
@@ -50,8 +50,8 @@
 		6E67CE591CCE97F2000E3579 /* GpioData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpioData.m; sourceTree = "<group>"; };
 		6E67CE5B1CD0FA09000E3579 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
 		6E67CE5C1CD0FA09000E3579 /* Protocols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Protocols.m; sourceTree = "<group>"; };
-		6E74AFB51CD7B10000F3D2F4 /* AdcData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdcData.h; sourceTree = "<group>"; };
-		6E74AFB61CD7B10000F3D2F4 /* AdcData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdcData.m; sourceTree = "<group>"; };
+		6E74AFB51CD7B10000F3D2F4 /* AnalogData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalogData.h; sourceTree = "<group>"; };
+		6E74AFB61CD7B10000F3D2F4 /* AnalogData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalogData.m; sourceTree = "<group>"; };
 		6E74AFB81CD7D26F00F3D2F4 /* AdcTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdcTableViewController.h; sourceTree = "<group>"; };
 		6E74AFB91CD7D26F00F3D2F4 /* AdcTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdcTableViewController.m; sourceTree = "<group>"; };
 		6E76583D1CB82D5500A3BBE9 /* ArduinoController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArduinoController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,8 +144,8 @@
 				6EE0A1151CCA9891005A0832 /* PersonalityData.m */,
 				6E67CE581CCE97F2000E3579 /* GpioData.h */,
 				6E67CE591CCE97F2000E3579 /* GpioData.m */,
-				6E74AFB51CD7B10000F3D2F4 /* AdcData.h */,
-				6E74AFB61CD7B10000F3D2F4 /* AdcData.m */,
+				6E74AFB51CD7B10000F3D2F4 /* AnalogData.h */,
+				6E74AFB61CD7B10000F3D2F4 /* AnalogData.m */,
 				6EE0A1111CCA80B3005A0832 /* PersonalityEntity.h */,
 				6EE0A1121CCA80B3005A0832 /* PersonalityEntity.m */,
 				6E67CE5B1CD0FA09000E3579 /* Protocols.h */,
@@ -321,7 +321,7 @@
 				6EB6E8F21CC193D000007098 /* IncomingData.m in Sources */,
 				6EE0A1161CCA9891005A0832 /* PersonalityData.m in Sources */,
 				6E67CE571CCE6540000E3579 /* GPIOTableViewController.m in Sources */,
-				6E74AFB71CD7B10000F3D2F4 /* AdcData.m in Sources */,
+				6E74AFB71CD7B10000F3D2F4 /* AnalogData.m in Sources */,
 				6E7658481CB82D5500A3BBE9 /* ViewController.m in Sources */,
 				6E67CE5A1CCE97F2000E3579 /* GpioData.m in Sources */,
 				6E67CE5D1CD0FA09000E3579 /* Protocols.m in Sources */,

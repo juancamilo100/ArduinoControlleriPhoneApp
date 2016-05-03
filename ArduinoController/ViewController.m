@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "GPIOTableViewController.h"
+#import "AdcTableViewController.h"
 
 @interface ViewController ()
 
@@ -20,6 +22,9 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    self.personality = [[PersonalityData alloc] init];
+    self.gpioData = [[GpioData alloc] init];
+    self.analogData = [[AnalogData alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,11 +38,11 @@
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     if ([central state] == CBCentralManagerStatePoweredOff) {
-        NSLog(@"CoreBluetooth BLE hardware is powered off");
+//        NSLog(@"CoreBluetooth BLE hardware is powered off");
         
     }
     else if ([central state] == CBCentralManagerStatePoweredOn) {
-        NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
+//        NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
 
     }
 }
@@ -49,12 +54,12 @@
 {
     double numberOfServices = 0;
     for (CBService *service in peripheral.services) {
-        NSLog(@"Discovered service: %@", service.UUID);
+//        NSLog(@"Discovered service: %@", service.UUID);
         [peripheral discoverCharacteristics:nil forService:service];
         numberOfServices++;
     }
     
-    NSLog(@"Number of services = %.1f", numberOfServices);
+//    NSLog(@"Number of services = %.1f", numberOfServices);
 }
 
 // Invoked when you discover the characteristics of a specified service.
@@ -66,7 +71,7 @@
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
         [peripheral setNotifyValue:true forCharacteristic:characteristic];
     }
-    NSLog(@"Reached characteristics");
+    [self sendValue:@"PERS"];
 }
 
 #pragma mark - Navigation
@@ -80,19 +85,33 @@
         scanDevicesTableViewController.deviceSelectionDelegate = self;
         scanDevicesTableViewController.peripheralManagerDelegate = self;
     }
+    
+    if ([segue.identifier isEqualToString:@"ShowGPIOControl"]) {
+        
+        GPIOTableViewController *gpioTableViewController = (GPIOTableViewController *)segue.destinationViewController;
+        
+        self.gpioInputUpdatedelegate = gpioTableViewController;
+        gpioTableViewController.gpioData = self.gpioData;
+    }
+    
+    if ([segue.identifier isEqualToString:@"ShowAdcControl"]) {
+        
+        AdcTableViewController *adcTableViewController = (AdcTableViewController *)segue.destinationViewController;
+        
+        self.adcInputUpdatedelegate = adcTableViewController;
+        adcTableViewController.analogData = self.analogData;
+    }
 }
 
 /***** RECEIVE DATA *******/
-// Invoked when you retrieve a specified characteristic's value, or when the peripheral device notifies your app that the characteristic's value has changed.
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSString * str = [[NSString alloc] initWithData:[characteristic value] encoding:NSUTF8StringEncoding];
     
     self.dataReceived = [[IncomingData alloc] initWithString:str];
     
-    [self processData:[self.dataReceived getDataType]];
-    
-    NSLog(@"Received data size = %d", (int)[str length]);
+    [self processData:self.dataReceived];
+
     self.DataReceivedTextField.text = str;
 }
 
@@ -121,13 +140,12 @@
     [self.selectedPeripheral setDelegate:self];
     [self.selectedPeripheral discoverServices:nil];
     
-    NSLog(@"A Device was selected");
+//    NSLog(@"A Device was selected");
 }
 
 #pragma mark Callbacks
 
 -(IBAction)SendButton:(id)sender {
-    NSLog(@"%@", self.SendTextField.text);
     [self sendValue:self.SendTextField.text];
     self.SendTextField.text = @"";
 }
@@ -137,10 +155,83 @@
     [self.DataReceivedTextField resignFirstResponder];
 }
 
--(void)processData:(NSUInteger)dataType {
-    switch (dataType) {
+-(void)processData:(IncomingData *)data {
+    
+    switch ([data getCommand]) {
+
+        case Personality_DataType:
+            
+            if ([[data getSubCommand] isEqualToString:@"INP"]) {
+
+                for (int i = 0; i < [[data getGpioInputPersonalityData].availablePinNumbers count]; i++) {
+                    
+                    NSNumber *availablePin = [[data getGpioInputPersonalityData].availablePinNumbers objectAtIndex:i];
+                    
+                    BOOL pinIsOnTheList = [self.personality.gpioInputPersonalityData.availablePinNumbers containsObject:availablePin];
+                    
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
+                        
+                        [self.personality.gpioInputPersonalityData.availablePinNumbers addObject:availablePin];
+                    }
+                }
+                
+                [self.gpioData initInputsWithData:self.personality.gpioInputPersonalityData.availablePinNumbers];
+            }
+            
+            else if([[data getSubCommand] isEqualToString:@"OUT"])
+            {
+                
+                for (int i = 0; i < [[data getGpioOutputPersonalityData].availablePinNumbers count]; i++) {
+                    NSNumber *availablePin = [[data getGpioOutputPersonalityData].availablePinNumbers objectAtIndex:i];
+                    BOOL pinIsOnTheList = [self.personality.gpioOutputPersonalityData.availablePinNumbers containsObject:availablePin];
+
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
+                        
+                        [self.personality.gpioOutputPersonalityData.availablePinNumbers addObject:availablePin];
+                    }
+                }
+                
+                [self.gpioData initOutputsWithData:self.personality.gpioOutputPersonalityData.availablePinNumbers];
+            }
+            
+            else if ([[data getSubCommand] isEqualToString:@"ADC"]) {
+                
+                for (int i = 0; i < [[data getAdcPersonalityData].availablePinNumbers count]; i++) {
+                    
+                    NSNumber *availablePin = [[data getAdcPersonalityData].availablePinNumbers objectAtIndex:i];
+                    
+                    BOOL pinIsOnTheList = [self.personality.adcPersonalityData.availablePinNumbers containsObject:availablePin];
+                    
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
+                        
+                        [self.personality.adcPersonalityData.availablePinNumbers addObject:availablePin];
+                    }
+                }
+
+                [self.analogData initAdcInputsWithData:self.personality.adcPersonalityData.availablePinNumbers];
+            }
+            
+            else if ([[data getSubCommand] isEqualToString:@"PWM"]) {
+                
+                for (int i = 0; i < [[data getPwmPersonalityData].availablePinNumbers count]; i++) {
+                    
+                    NSNumber *availablePin = [[data getPwmPersonalityData].availablePinNumbers objectAtIndex:i];
+                    
+                    BOOL pinIsOnTheList = [self.personality.pwmPersonalityData.availablePinNumbers containsObject:availablePin];
+                    
+                    if (!pinIsOnTheList && ![availablePin isEqual:@""]) {
+                        
+                        [self.personality.pwmPersonalityData.availablePinNumbers addObject:availablePin];
+                    }
+                }
+                
+                [self.analogData initPwmOutputsWithData:self.personality.pwmPersonalityData.availablePinNumbers];
+            }
+            break;
+            
         case Adc_DataType:
-            NSLog(@"Received ADC data");
+            [self.adcInputUpdatedelegate updateAdcInput:data.payload[0] withValue:data.payload[1]];
+            
             break;
             
         case Pwm_DataType:
@@ -148,12 +239,31 @@
             break;
             
         case Gpio_DataType:
-            NSLog(@"Received GPIO data");
+            
+            if ([[data getSubCommand] isEqualToString:@"INPUT"])
+            {
+                [self.gpioInputUpdatedelegate updateDigitalInput:data.payload[1] withValue:data.payload[2]];
+            }
             break;
             
         default:
             break;
     }
+}
+
+#pragma mark Delegate Methods
+
+- (void) updateDigitalOutput:(NSInteger)outputNumber withValue:(NSInteger)state {
+    
+    NSString *message = [NSString stringWithFormat:@"OUT:%ld:%ld", (long)outputNumber, (long)state];
+    
+    [self sendValue:message];
+}
+
+- (void) updatePwmOutput:(NSInteger)pinNumber withValue:(NSInteger)duty {
+    
+    NSString *message = [NSString stringWithFormat:@"PWM:%ld:%ld", (long)pinNumber, (long)duty];
+    [self sendValue:message];
 }
 
 @end

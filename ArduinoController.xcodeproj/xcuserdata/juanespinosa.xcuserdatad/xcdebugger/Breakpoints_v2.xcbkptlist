@@ -574,11 +574,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/AdcTableViewController.m"
-            timestampString = "483995081.332443"
+            timestampString = "483998390.978066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -590,11 +590,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ArduinoController/AdcTableViewController.m"
-            timestampString = "483994559.612792"
+            timestampString = "483998390.978066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>

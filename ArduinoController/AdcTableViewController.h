@@ -10,10 +10,13 @@
 #import "AnalogData.h"
 #import "Protocols.h"
 
-@interface AdcTableViewController : UITableViewController<AdcInputUpdateProtocol>
+@interface AdcTableViewController : UITableViewController<AdcInputUpdateProtocol, PwmOutputUpdateProtocol>
 
+@property (nonatomic, weak) id <PwmOutputUpdateProtocol> pwmOutputDelegate;
+@property (nonatomic, strong) NSMutableArray *sliders;
 @property (strong, nonatomic) NSDictionary *analog;
 @property (strong, nonatomic) AnalogData *analogData;
 @property (strong, nonatomic) NSArray *sectionTitles;
+@property (strong, nonatomic) UISlider *pwmSlider;
 
 @end

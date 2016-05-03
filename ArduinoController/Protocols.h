@@ -26,6 +26,12 @@
 
 @end
 
+@protocol PwmOutputUpdateProtocol
+
+- (void) updatePwmOutput:(NSInteger)pinNumber withValue:(NSInteger)duty;
+
+@end
+
 @interface Protocols : NSObject
 
 @end

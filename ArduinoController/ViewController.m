@@ -260,4 +260,10 @@
     [self sendValue:message];
 }
 
+- (void) updatePwmOutput:(NSInteger)pinNumber withValue:(NSInteger)duty {
+    
+    NSString *message = [NSString stringWithFormat:@"PWM:%ld:%ld", (long)pinNumber, (long)duty];
+    [self sendValue:message];
+}
+
 @end

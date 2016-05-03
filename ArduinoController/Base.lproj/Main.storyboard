@@ -17,22 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_ge_navy" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-5J-Qbi">
-                                <rect key="frame" x="0.0" y="72" width="320" height="496"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEC-KV-7XG">
-                                <rect key="frame" x="0.0" y="489" width="320" height="59"/>
-                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="0.41000000000000003" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="26"/>
-                                <state key="normal" title="Scan for Devices">
-                                    <color key="titleShadowColor" red="0.33124563550000002" green="0.33124563550000002" blue="0.33124563550000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="LDz-RV-ukM" kind="modal" identifier="ScanForDevices" id="V0U-PU-5Yw"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1h-go-B96">
-                                <rect key="frame" x="0.0" y="198" width="320" height="83"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="83"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="47"/>
                                 <state key="normal" title="GPIO">
@@ -43,7 +29,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2i-cs-eOf">
-                                <rect key="frame" x="0.0" y="289" width="320" height="81"/>
+                                <rect key="frame" x="0.0" y="211" width="320" height="81"/>
                                 <color key="backgroundColor" red="0.34271793913560805" green="0.85183118386243384" blue="0.34666819054414633" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="47"/>
                                 <state key="normal" title="ADC">
@@ -51,6 +37,17 @@
                                 </state>
                                 <connections>
                                     <segue destination="Q6a-sG-GJT" kind="push" identifier="ShowAdcControl" id="rjV-4L-X7Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEC-KV-7XG">
+                                <rect key="frame" x="0.0" y="452" width="320" height="59"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="0.41000000000000003" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="26"/>
+                                <state key="normal" title="Scan for Devices">
+                                    <color key="titleShadowColor" red="0.33124563550000002" green="0.33124563550000002" blue="0.33124563550000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="LDz-RV-ukM" kind="modal" identifier="ScanForDevices" id="V0U-PU-5Yw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -207,7 +204,4 @@
             <point key="canvasLocation" x="108" y="261"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logo_ge_navy" width="199" height="110"/>
-    </resources>
 </document>

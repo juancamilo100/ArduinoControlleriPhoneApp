@@ -17,26 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iX2-Ri-e4M">
-                                <rect key="frame" x="58" y="383" width="161" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2ww-qt-AVB">
-                                <rect key="frame" x="40" y="421" width="240" height="41"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data Received" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ej3-dB-2Zc">
-                                <rect key="frame" x="107" y="470" width="117" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_ge_navy" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-5J-Qbi">
+                                <rect key="frame" x="0.0" y="72" width="320" height="496"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEC-KV-7XG">
-                                <rect key="frame" x="91" y="504" width="139" height="30"/>
+                                <rect key="frame" x="0.0" y="489" width="320" height="59"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="0.41000000000000003" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="26"/>
                                 <state key="normal" title="Scan for Devices">
                                     <color key="titleShadowColor" red="0.33124563550000002" green="0.33124563550000002" blue="0.33124563550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -44,28 +31,21 @@
                                     <segue destination="LDz-RV-ukM" kind="modal" identifier="ScanForDevices" id="V0U-PU-5Yw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMs-gt-EuE">
-                                <rect key="frame" x="221" y="383" width="46" height="30"/>
-                                <state key="normal" title="Send"/>
-                                <connections>
-                                    <action selector="SendButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ld-fl-8mN"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1h-go-B96">
-                                <rect key="frame" x="63" y="115" width="192" height="55"/>
-                                <color key="backgroundColor" red="0.0" green="0.49572604727451219" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <rect key="frame" x="0.0" y="198" width="320" height="83"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="47"/>
                                 <state key="normal" title="GPIO">
-                                    <color key="titleColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="XO8-tK-NG4" kind="push" identifier="ShowGPIOControl" id="2wa-Da-v8W"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2i-cs-eOf">
-                                <rect key="frame" x="63" y="199" width="192" height="55"/>
-                                <color key="backgroundColor" red="0.0" green="0.49572604729999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <rect key="frame" x="0.0" y="289" width="320" height="81"/>
+                                <color key="backgroundColor" red="0.34271793913560805" green="0.85183118386243384" blue="0.34666819054414633" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="47"/>
                                 <state key="normal" title="ADC">
                                     <color key="titleColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -79,16 +59,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="2jS-0d-PHx"/>
                     <connections>
-                        <outlet property="DataReceivedTextField" destination="2ww-qt-AVB" id="p3J-oO-STM"/>
                         <outlet property="ScanForDevicesButton" destination="zEC-KV-7XG" id="baL-zr-H3f"/>
-                        <outlet property="SendTextField" destination="iX2-Ri-e4M" id="FeB-Tn-hwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="640" y="261"/>
         </scene>
-        <!--Adc Table View Controller-->
+        <!--ADC Inputs-->
         <scene sceneID="gl4-kC-0WH">
             <objects>
                 <tableViewController id="Q6a-sG-GJT" customClass="AdcTableViewController" sceneMemberID="viewController">
@@ -127,7 +105,7 @@
                             <outlet property="delegate" destination="Q6a-sG-GJT" id="zML-nh-Euh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9AI-gl-TLp"/>
+                    <navigationItem key="navigationItem" title="ADC Inputs" id="9AI-gl-TLp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rML-3g-CRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,4 +207,7 @@
             <point key="canvasLocation" x="108" y="261"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_ge_navy" width="199" height="110"/>
+    </resources>
 </document>

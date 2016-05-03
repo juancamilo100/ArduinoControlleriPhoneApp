@@ -69,7 +69,6 @@
         cell.detailTextLabel.text = ([[gpioDictionary objectForKey:keys[indexPath.row]] integerValue]) ? @"HIGH" : @"LOW";
     }
 
-    
     return cell;
 }
 
@@ -78,8 +77,6 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
-        NSLog(@"Activated an output");
-        
         NSString *sectionTitle = [self.sectionTitles objectAtIndex:indexPath.section];
         NSMutableDictionary *gpioDictionary = [self.gpio objectForKey:sectionTitle];
         
@@ -97,7 +94,6 @@
 
 #pragma mark Delegate Methods
 - (void) updateDigitalInput:(NSString *)inputNumber withValue:(NSNumber *)state {
-    NSLog(@"Pin number is: %@ and State is: %@", inputNumber, state);
     [self.gpioData.inputs setObject:state forKey:inputNumber];
     
     [self.tableView reloadData];

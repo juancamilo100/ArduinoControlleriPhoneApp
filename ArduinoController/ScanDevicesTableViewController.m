@@ -55,7 +55,7 @@ static NSArray *acceptedDevices = nil;
 // CBCentralManagerDelegate - This is called with the CBPeripheral class as its main input parameter. This contains most of the information there is to know about a BLE peripheral.
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSString *uuid = [[peripheral identifier] UUIDString];
+//    NSString *uuid = [[peripheral identifier] UUIDString];
     NSString *peripheralName = [peripheral name];
     
 //    NSLog(@"uuid = %@", uuid);

@@ -111,8 +111,6 @@
     self.dataReceived = [[IncomingData alloc] initWithString:str];
     
     [self processData:self.dataReceived];
-    
-    NSLog(@"Received data = %@", str);
 
     self.DataReceivedTextField.text = str;
 }
@@ -148,7 +146,6 @@
 #pragma mark Callbacks
 
 -(IBAction)SendButton:(id)sender {
-    NSLog(@"%@", self.SendTextField.text);
     [self sendValue:self.SendTextField.text];
     self.SendTextField.text = @"";
 }
@@ -212,12 +209,10 @@
                 }
 
                 [self.adcData initAdcInputsWithData:self.personality.adcPersonalityData.availablePinNumbers];
-                NSLog(@"This is the adc array: %@", self.adcData.adcInputs);
             }
             break;
             
         case Adc_DataType:
-            NSLog(@"Received ADC data");
             [self.adcInputUpdatedelegate updateAdcInput:data.payload[0] withValue:data.payload[1]];
             
             break;
@@ -227,7 +222,6 @@
             break;
             
         case Gpio_DataType:
-            NSLog(@"Received GPIO data");
             
             if ([[data getSubCommand] isEqualToString:@"INPUT"])
             {
@@ -244,9 +238,7 @@
 
 - (void) updateDigitalOutput:(NSInteger)outputNumber withValue:(NSInteger)state {
     
-    
     NSString *message = [NSString stringWithFormat:@"OUT:%ld:%ld", (long)outputNumber, (long)state];
-//    NSLog(@"Sent the output value to Arduino: %@", message);
     
     [self sendValue:message];
 }
